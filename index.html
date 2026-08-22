@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fátima Urrutia — Mechatronics Engineering Portfolio</title>
+<meta name="description" content="Engineering portfolio of Fátima Urrutia: hexapod robotics, CubeSat attitude determination and control, electrodynamic tether deorbit, industrial automation and embedded systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,75..125,400..800;1,75..125,400..700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#10171E;
+  --ink-2:#3B4954;
+  --ink-3:#66757F;
+  --paper:#E7EBED;
+  --card:#F4F6F7;
+  --rule:#C0C8CD;
+  --jade:#0F6B57;
+  --amber:#A85F14;
+  --display:"Archivo",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --pad:clamp(20px,5vw,64px);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+img{max-width:100%}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 var(--pad)}
+
+/* ---------- utility type ---------- */
+.mono{
+  font-family:var(--mono);
+  font-size:.72rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+}
+
+/* ---------- top bar ---------- */
+.bar{
+  position:sticky;top:0;z-index:50;
+  background:rgba(231,235,237,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--rule);
+}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:52px}
+.bar .sig{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+.bar nav{display:flex;gap:22px}
+.bar nav a{
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-3);text-decoration:none;padding:4px 0;border-bottom:1px solid transparent;
+}
+.bar nav a:hover,.bar nav a:focus-visible{color:var(--ink);border-bottom-color:var(--jade)}
+@media(max-width:720px){.bar nav{display:none}}
+
+/* ---------- hero title block ---------- */
+.hero{background:var(--ink);color:#F0F3F4;padding:clamp(40px,7vw,80px) 0 clamp(34px,5vw,56px)}
+.hero h1{
+  font-family:var(--display);
+  font-variation-settings:"wdth" 122;
+  font-weight:800;
+  font-size:clamp(2.6rem,9vw,6.4rem);
+  line-height:.92;
+  letter-spacing:-.03em;
+  margin:0 0 6px;
+}
+.hero .lede{
+  max-width:52ch;margin:22px 0 0;color:#B9C4CB;font-size:clamp(1rem,1.6vw,1.12rem)
+}
+.hero .lede strong{color:#F0F3F4;font-weight:500}
+
+.titleblock{
+  margin-top:clamp(34px,5vw,54px);
+  border-top:1px solid #2B3740;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+}
+.tb-cell{padding:14px 16px 18px;border-right:1px solid #2B3740}
+.tb-cell:last-child{border-right:0}
+.tb-cell .k{font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:#6E7F8A;display:block;margin-bottom:6px}
+.tb-cell .v{font-size:.9rem;color:#E4E9EB;line-height:1.35}
+@media(max-width:820px){
+  .titleblock{grid-template-columns:repeat(2,1fr)}
+  .tb-cell:nth-child(2n){border-right:0}
+  .tb-cell:nth-child(-n+2){border-bottom:1px solid #2B3740}
+}
+
+/* ---------- hero portrait ---------- */
+.hero-top{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:clamp(28px,5vw,72px);
+  align-items:center;
+}
+.portrait{
+  width:clamp(170px,20vw,250px);
+  aspect-ratio:1;
+  border-radius:50%;
+  object-fit:cover;
+  display:block;
+  border:1px solid #2B3740;
+}
+@media(max-width:760px){
+  .hero-top{grid-template-columns:1fr;gap:26px}
+  .portrait{width:150px;order:-1}
+}
+
+/* ---------- sections ---------- */
+section{padding:clamp(56px,8vw,104px) 0}
+.sec-head{
+  display:flex;align-items:baseline;gap:18px;
+  border-bottom:1px solid var(--rule);padding-bottom:12px;margin-bottom:clamp(32px,5vw,52px)
+}
+.sec-head h2{
+  font-family:var(--display);font-variation-settings:"wdth" 112;font-weight:700;
+  font-size:clamp(1.3rem,2.4vw,1.75rem);letter-spacing:-.01em;margin:0;
+}
+.sec-head .count{margin-left:auto;font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;color:var(--ink-3)}
+
+/* ---------- project sheets ---------- */
+.sheet{
+  background:var(--card);
+  border:1px solid var(--rule);
+  margin-bottom:clamp(26px,4vw,40px);
+}
+.sheet-top{
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  padding:11px 18px;border-bottom:1px solid var(--rule);background:#E2E7E9;
+}
+.sheet-top .code{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;font-weight:600;color:var(--jade)}
+.sheet-top .rev{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;color:var(--ink-3)}
+.sheet-top .state{
+  margin-left:auto;font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--amber);border:1px solid currentColor;padding:2px 8px;
+}
+.sheet-body{display:grid;grid-template-columns:1.15fr .85fr;gap:0}
+.sheet-main{padding:clamp(22px,3vw,34px);border-right:1px solid var(--rule)}
+.sheet-side{padding:clamp(22px,3vw,30px);display:flex;flex-direction:column;gap:20px}
+@media(max-width:860px){
+  .sheet-body{grid-template-columns:1fr}
+  .sheet-main{border-right:0;border-bottom:1px solid var(--rule)}
+}
+.sheet h3{
+  font-family:var(--display);font-variation-settings:"wdth" 115;font-weight:700;
+  font-size:clamp(1.5rem,3.2vw,2.15rem);line-height:1.05;letter-spacing:-.02em;margin:0 0 8px;
+}
+.sheet .role{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;color:var(--amber);margin:0 0 18px}
+.sheet p.text{margin:0 0 14px;color:var(--ink-2);max-width:62ch}
+.sheet p.text:last-child{margin-bottom:0}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:20px}
+.tags span{
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;
+  border:1px solid var(--rule);padding:3px 8px;color:var(--ink-2);background:#fff;
+}
+
+/* spec table */
+.spec{width:100%;border-collapse:collapse;font-size:.84rem}
+.spec th,.spec td{text-align:left;vertical-align:top;padding:7px 0;border-bottom:1px solid var(--rule)}
+.spec th{
+  font-family:var(--mono);font-weight:500;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-3);width:38%;padding-right:12px;
+}
+.spec td{color:var(--ink)}
+.spec tr:last-child th,.spec tr:last-child td{border-bottom:0}
+
+/* figures */
+.fig{background:#fff;border:1px solid var(--rule);padding:12px}
+.fig svg{width:100%;height:auto;display:block}
+.fig img{width:100%;display:block;aspect-ratio:4/3;object-fit:cover;background:#fff}
+.fig.contain img{aspect-ratio:16/10;object-fit:contain}
+.fig .cap{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;color:var(--ink-3);margin-top:10px;text-transform:uppercase}
+.ln{fill:none;stroke:var(--ink);stroke-width:1.4;stroke-linecap:round}
+.ln-thin{fill:none;stroke:var(--ink-3);stroke-width:.8}
+.ln-jade{fill:none;stroke:var(--jade);stroke-width:1.8;stroke-linecap:round}
+.ln-amber{fill:none;stroke:var(--amber);stroke-width:1.6;stroke-linecap:round}
+.dot-jade{fill:var(--jade)}
+.dot-amber{fill:var(--amber)}
+.figtext{font-family:var(--mono);font-size:8.5px;letter-spacing:.08em;fill:var(--ink-3)}
+
+/* ---------- capabilities ---------- */
+.caps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.cap{background:var(--card);padding:24px 20px}
+.cap h4{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--jade);margin:0 0 14px;font-weight:600}
+.cap ul{margin:0;padding:0;list-style:none}
+.cap li{font-size:.86rem;color:var(--ink-2);padding:5px 0;border-bottom:1px dotted var(--rule)}
+.cap li:last-child{border-bottom:0}
+@media(max-width:860px){.caps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.caps{grid-template-columns:1fr}}
+
+/* ---------- earlier work cards ---------- */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.2vw,24px)}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.cards{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--rule);display:flex;flex-direction:column}
+.card .thumb{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border-bottom:1px solid var(--rule);background:#fff}
+.card .thumb-svg{border-bottom:1px solid var(--rule);background:#fff;padding:10px}
+.card .thumb-svg svg{width:100%;height:auto;display:block}
+.card-body{padding:18px 18px 20px;display:flex;flex-direction:column;flex:1}
+.card .code{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;color:var(--jade);display:block;margin-bottom:8px}
+.card h4{font-family:var(--display);font-variation-settings:"wdth" 112;font-weight:700;font-size:1.1rem;margin:0 0 9px;letter-spacing:-.01em;line-height:1.15}
+.card p{margin:0;font-size:.85rem;color:var(--ink-2)}
+.card .repo{
+  margin-top:auto;padding-top:14px;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;
+  color:var(--amber);text-decoration:none;display:inline-block;
+}
+.card .repo:hover,.card .repo:focus-visible{text-decoration:underline}
+.also{margin-top:clamp(22px,3vw,32px);font-size:.86rem;color:var(--ink-3);border-top:1px solid var(--rule);padding-top:16px}
+
+/* ---------- contact ---------- */
+.contact{background:var(--ink);color:#F0F3F4}
+.contact .sec-head{border-bottom-color:#2B3740}
+.contact .sec-head h2{color:#F0F3F4}
+.contact .sec-head .count{color:#6E7F8A}
+.links{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #2B3740}
+.links a{
+  padding:26px 20px;border-right:1px solid #2B3740;border-bottom:1px solid #2B3740;
+  text-decoration:none;display:block;transition:background .18s ease;
+}
+.links a:last-child{border-right:0}
+.links a:hover,.links a:focus-visible{background:#1A242C}
+.links .k{font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:#6E7F8A;display:block;margin-bottom:8px}
+.links .v{font-size:.98rem;color:#F0F3F4;font-family:var(--display);font-variation-settings:"wdth" 108;font-weight:600;word-break:break-word}
+@media(max-width:720px){
+  .links{grid-template-columns:1fr}
+  .links a{border-right:0}
+}
+footer{padding:22px 0 40px;font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:#5D6C76;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+/* ---------- reveal ---------- */
+@media(prefers-reduced-motion:no-preference){
+  .rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+  .rv.in{opacity:1;transform:none}
+}
+:focus-visible{outline:2px solid var(--jade);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="wrap">
+    <span class="sig">F. Urrutia — Mechatronics</span>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#earlier">Earlier work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <div>
+        <p class="mono" style="color:#6E7F8A;margin:0 0 18px">Engineering portfolio / Rev. A / 2026</p>
+        <h1>Fátima<br>Urrutia</h1>
+        <p class="lede">I design control systems for machines that have to hold themselves together without anyone watching — <strong>a walking robot, a satellite with no actuators, a tether that brakes against a magnetic field, a line that sorts by weight.</strong> Most of my work sits between the mechanism and the code that keeps it stable.</p>
+      </div>
+      <img class="portrait" src="images/portrait.jpg" alt="Portrait of Fátima Urrutia.">
+    </div>
+
+    <div class="titleblock">
+      <div class="tb-cell"><span class="k">Discipline</span><span class="v">Mechatronics engineering<br>Robotics &amp; space systems</span></div>
+      <div class="tb-cell"><span class="k">Affiliation</span><span class="v">Universidad del Valle de Guatemala<br>Aerospace Laboratory</span></div>
+      <div class="tb-cell"><span class="k">Location</span><span class="v">Guatemala City, Guatemala</span></div>
+      <div class="tb-cell"><span class="k">Status</span><span class="v">Final-year student<br>Open to robotics &amp; space roles</span></div>
+    </div>
+
+  </div>
+</header>
+
+<main>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="mono">01</span>
+      <h2>Selected work</h2>
+      <span class="count">4 entries</span>
+    </div>
+
+    <!-- ===== HEXAPOD ===== -->
+    <article class="sheet rv">
+      <div class="sheet-top">
+        <span class="code">HEX-01</span>
+        <span class="rev">Undergraduate thesis · 2026</span>
+        <span class="state">Hardware validated</span>
+      </div>
+      <div class="sheet-body">
+        <div class="sheet-main">
+          <h3>HexaPod</h3>
+          <p class="role">Author — mechanical design, kinematics, firmware, control pipeline</p>
+          <p class="text">An eighteen-degree-of-freedom walking robot built end to end as my thesis project. Each of the six legs has three joints, so every step is a coordinated solution of the inverse kinematics for three limbs at once while the other three hold the body up. A hexapod is statically stable — it never has to catch itself — which makes it the right platform for slow, deliberate work on ground a wheeled robot cannot cross.</p>
+          <p class="text">The control path runs from a MATLAB model down to the joints: analytic inverse kinematics generate the foot trajectories, an ESP32 carries them over Wi-Fi as TCP/JSON packets, and an OpenCM9.04 board translates them into position commands for the servo chain. Getting that path stable meant resolving a core conflict in the Bluepad32 stack, remapping servo IDs, fabricating a custom UART board to make the two controllers talk cleanly, and tuning gait timing until the body stopped fighting its own legs.</p>
+          <p class="text">The simulation and the hardware share one gait model, so a change to the tripod timing in MATLAB is the same change the robot walks with. Current work extends that model from straight-line walking to in-place rotation.</p>
+          <div class="tags">
+            <span>MATLAB</span><span>Robotics Toolbox</span><span>Inverse kinematics</span><span>C/C++</span><span>ESP32</span><span>Dynamixel</span><span>PCB design</span><span>CAD</span>
+          </div>
+        </div>
+        <div class="sheet-side">
+          <table class="spec">
+            <tr><th>Configuration</th><td>6 legs × 3 DOF — 18 joints</td></tr>
+            <tr><th>Actuation</th><td>18 × Dynamixel AX-12A, daisy-chained</td></tr>
+            <tr><th>Controllers</th><td>OpenCM9.04 (servo bus) + ESP32 (network bridge)</td></tr>
+            <tr><th>Link</th><td>TCP/JSON over Wi-Fi; custom UART interface PCB</td></tr>
+            <tr><th>Gait</th><td>Alternating tripod; straight walk + in-place rotation</td></tr>
+            <tr><th>Power</th><td>Lithium pack with BMS and matched charger</td></tr>
+            <tr><th>Simulation</th><td>MATLAB, Peter Corke Robotics Toolbox</td></tr>
+          </table>
+          <div class="fig">
+            <img src="images/hexapod-hardware.jpg" alt="The assembled hexapod robot standing on a laboratory floor, six three-jointed legs supporting a chassis with battery pack and control boards.">
+            <div class="cap">Fig. 1.1 — Assembled platform, laboratory</div>
+          </div>
+          <div class="fig contain">
+            <img src="images/hexapod-cad.jpg" alt="CAD render of the hexapod seen from above, showing the chassis plate and the six legs with their servo brackets and green foot links." loading="lazy">
+            <div class="cap">Fig. 1.2 — CAD assembly, leg arrangement</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ===== QUETZAL-2 ADCS ===== -->
+    <article class="sheet rv">
+      <div class="sheet-top">
+        <span class="code">QTZ2-ADCS</span>
+        <span class="rev">UVG Aerospace Laboratory</span>
+        <span class="state">In development</span>
+      </div>
+      <div class="sheet-body">
+        <div class="sheet-main">
+          <h3>QUETZAL-2 attitude determination &amp; control</h3>
+          <p class="role">Subsystem lead — ADCS design, analysis and flight documentation</p>
+          <p class="text">QUETZAL-2 is Guatemala's second nanosatellite. I lead the subsystem that answers two questions in orbit: which way is the satellite pointing, and what keeps it from tumbling. The answer to the second is entirely passive — a permanent NdFeB magnet aligns the body with Earth's field, and four hysteresis rods bleed off rotational energy as magnetic losses. No reaction wheels, no magnetorquers, nothing that can fail closed.</p>
+          <p class="text">Determination is the active half. A magnetometer, an inertial unit and photodiode sun sensors share a single 400 kHz I²C bus; TRIAD gives the first attitude estimate from the field and sun vectors, and a multiplicative extended Kalman filter written in C++ carries it forward between measurements. Because the control magnet sits inside the same spacecraft as the magnetometer, I ran a magnetic cleanliness analysis across three measurement campaigns to separate the field the satellite makes from the field it is trying to measure — including parasitic interference from the deorbit module's own magnets.</p>
+          <p class="text">The subsystem is documented the way flight hardware has to be: controlled electronics and mechanical design documents under revision, a bill of materials with every part classified as magnetic or not, and as-built geometry that has already forced one design revision when a zero-clearance crossing turned up in the layout.</p>
+          <div class="tags">
+            <span>Passive magnetic control</span><span>TRIAD</span><span>MEKF</span><span>C++</span><span>ATSAMD21</span><span>I²C</span><span>Sensor calibration</span><span>Python</span><span>Flight documentation</span>
+          </div>
+        </div>
+        <div class="sheet-side">
+          <table class="spec">
+            <tr><th>Platform</th><td>CubeSat — QUETZAL-2</td></tr>
+            <tr><th>Control</th><td>Passive: NdFeB dipole + 4 hysteresis rods</td></tr>
+            <tr><th>Sensors</th><td>MMC5983MA magnetometer · BMI088 IMU · TEMD6010FX01 photodiodes · ADS7828 ADC</td></tr>
+            <tr><th>Bus</th><td>Single I²C segment at 400 kHz</td></tr>
+            <tr><th>Estimation</th><td>TRIAD initialiser into multiplicative EKF</td></tr>
+            <tr><th>Analysis</th><td>Magnetic cleanliness, 3 measurement campaigns</td></tr>
+            <tr><th>Deliverables</th><td>Electronics &amp; mechanical design documents, analysis reports</td></tr>
+          </table>
+          <div class="fig contain">
+            <img src="images/quetzal2-exploded.jpg" alt="Exploded view of the QUETZAL-2 CubeSat showing the stacked subsystem boards, labelled deorbit, power, on-board computer, ADCS, MILO payload, structure, and communications with LoRa." loading="lazy">
+            <div class="cap">Fig. 2.1 — Spacecraft stack, ADCS in context</div>
+          </div>
+          <div class="fig">
+            <svg viewBox="0 0 300 190" role="img" aria-label="Diagram of the CubeSat aligning its permanent magnet dipole with a geomagnetic field line, with hysteresis rods mounted perpendicular to the dipole.">
+              <path class="ln-thin" d="M12,158 C70,120 108,72 148,34 C188,72 226,120 288,158"/>
+              <text class="figtext" x="12" y="172">GEOMAGNETIC FIELD LINE B</text>
+              <g transform="translate(150,96) rotate(-18)">
+                <rect class="ln" x="-38" y="-38" width="76" height="76"/>
+                <path class="ln-jade" d="M0,-26 L0,26"/>
+                <path class="ln-jade" d="M-6,-19 L0,-28 L6,-19"/>
+                <text class="figtext" x="6" y="-22" style="fill:var(--jade)">m</text>
+                <path class="ln-amber" d="M-26,-13 L26,-13"/>
+                <path class="ln-amber" d="M-26,13 L26,13"/>
+                <text class="figtext" x="-24" y="-17" style="fill:var(--amber)">HYST. RODS</text>
+              </g>
+              <path class="ln-thin" d="M204,60 A62,62 0 0 1 214,88"/>
+              <path class="ln-thin" d="M209,84 L215,90 L219,82"/>
+              <text class="figtext" x="218" y="66">DAMPED</text>
+              <text class="figtext" x="218" y="77">LIBRATION</text>
+            </svg>
+            <div class="cap">Fig. 2.2 — Passive alignment and damping</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ===== DOSET ===== -->
+    <article class="sheet rv">
+      <div class="sheet-top">
+        <span class="code">DOSET-ET</span>
+        <span class="rev">Concept design · Rev. B model</span>
+        <span class="state">Analysis complete</span>
+      </div>
+      <div class="sheet-body">
+        <div class="sheet-main">
+          <h3>Electrodynamic tape tether for deorbit</h3>
+          <p class="role">Physics model, configuration trade study, materials validation</p>
+          <p class="text">A deorbit module that removes a small satellite from orbit using nothing but the environment it flies through. A bare aluminium tape deployed from the spacecraft collects electrons from the ionospheric plasma along its length; the resulting current, crossed with Earth's magnetic field, produces a Lorentz force that opposes the orbital velocity. No propellant, no thruster, no stored energy — the drag comes from the plasma and the field.</p>
+          <p class="text">I rebuilt the physics model after finding three errors in the earlier design that each broke the concept in a different way: a tape thickness that no supplier could actually manufacture, an overestimate of how strongly the tether couples to the geomagnetic field, and an incorrect formulation of orbital-motion-limited current collection. The corrected model settles on a 200 m × 15 mm × 25 µm Al-1350 tape as the primary configuration, backed by a trade study of five candidate materials scored against flight heritage, conductivity and handling.</p>
+          <p class="text">The honest conclusion of that work is a risk, not a result: the deployment mechanism, at roughly 400–500 g, is heavy enough that it may push the minimum viable host spacecraft from 2U to 3U. That constraint matters more to the mission than any refinement of the tape itself.</p>
+          <div class="tags">
+            <span>Orbital mechanics</span><span>Plasma physics</span><span>Trade study</span><span>Python</span><span>Systems engineering</span><span>Materials selection</span>
+          </div>
+        </div>
+        <div class="sheet-side">
+          <table class="spec">
+            <tr><th>Function</th><td>Propellantless deorbit by electrodynamic drag</td></tr>
+            <tr><th>Primary config.</th><td>200 m × 15 mm × 25 µm bare tape</td></tr>
+            <tr><th>Material</th><td>Al-1350 — selected from 5 candidates</td></tr>
+            <tr><th>Collection</th><td>Orbital-motion-limited electron collection</td></tr>
+            <tr><th>Force</th><td>Lorentz drag, F = I L × B</td></tr>
+            <tr><th>Key risk</th><td>Deployer mass ≈ 400–500 g → possible 3U host</td></tr>
+            <tr><th>Scope</th><td>Corrected Rev. B model + materials trade study</td></tr>
+          </table>
+          <div class="fig">
+            <svg viewBox="0 0 300 190" role="img" aria-label="Diagram of a satellite trailing a long conductive tape; current flows along the tape and crosses the magnetic field to produce a drag force opposing the velocity.">
+              <rect class="ln" x="34" y="30" width="34" height="26"/>
+              <text class="figtext" x="34" y="24">HOST S/C</text>
+              <path class="ln-jade" d="M51,56 L108,168"/>
+              <text class="figtext" x="60" y="112" style="fill:var(--jade)">TAPE, 200 m</text>
+              <path class="ln-jade" d="M74,96 L82,104 L70,106"/>
+              <text class="figtext" x="86" y="90" style="fill:var(--jade)">I</text>
+              <g class="ln-thin">
+                <circle cx="180" cy="52" r="7"/><circle cx="180" cy="52" r="1.8" fill="var(--ink-3)" stroke="none"/>
+                <circle cx="222" cy="92" r="7"/><circle cx="222" cy="92" r="1.8" fill="var(--ink-3)" stroke="none"/>
+                <circle cx="180" cy="132" r="7"/><circle cx="180" cy="132" r="1.8" fill="var(--ink-3)" stroke="none"/>
+              </g>
+              <text class="figtext" x="196" y="46">B (OUT OF PAGE)</text>
+              <path class="ln-amber" d="M120,146 L188,146"/>
+              <path class="ln-amber" d="M180,140 L190,146 L180,152"/>
+              <text class="figtext" x="122" y="140" style="fill:var(--amber)">F = I L × B</text>
+              <path class="ln-thin" d="M96,20 L34,20"/><path class="ln-thin" d="M42,15 L33,20 L42,25"/>
+              <text class="figtext" x="100" y="24">v</text>
+            </svg>
+            <div class="cap">Fig. 3.1 — Drag generation geometry</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ===== AUTOMATION ===== -->
+    <article class="sheet rv">
+      <div class="sheet-top">
+        <span class="code">AUT-CB</span>
+        <span class="rev">Industrial Automation · UVG</span>
+        <span class="state">Built &amp; commissioned</span>
+      </div>
+      <div class="sheet-body">
+        <div class="sheet-main">
+          <h3>Conveyor cell for weight-based sorting</h3>
+          <p class="role">PLC programming, control panel wiring, HMI, mechanical build</p>
+          <p class="text">A working conveyor that weighs each package as it arrives and routes it to the correct output. The logic runs on a Siemens PLC programmed in STL under SIMATIC Manager — statement list rather than ladder, which forced me to think about the scan cycle explicitly instead of leaning on graphical shorthand.</p>
+          <p class="text">I wired the control panel to industrial practice, built an HMI so an operator can set thresholds and watch counts without touching the program, and fabricated the mechanics from 3D-printed parts on an MDF frame with a modular plastic belt. Sensors detect package arrival and position, the drive motor indexes the belt, and the sorting decision happens between one part leaving the scale and the next one reaching it.</p>
+          <p class="text">It is a teaching-scale machine, but the whole chain is real: sensor to input card, logic to output card, output to actuator, and an interface a person who did not write the code can actually operate.</p>
+          <div class="tags">
+            <span>Siemens PLC</span><span>STL</span><span>SIMATIC Manager</span><span>HMI design</span><span>Control panel wiring</span><span>Sensors &amp; actuators</span><span>3D printing</span>
+          </div>
+        </div>
+        <div class="sheet-side">
+          <table class="spec">
+            <tr><th>Function</th><td>Automatic classification of packages by weight</td></tr>
+            <tr><th>Controller</th><td>Siemens PLC, programmed in STL</td></tr>
+            <tr><th>Software</th><td>SIMATIC Manager</td></tr>
+            <tr><th>Operator interface</th><td>HMI — thresholds, status, counts</td></tr>
+            <tr><th>Field devices</th><td>Weight sensing, position sensors, gearmotor drive</td></tr>
+            <tr><th>Electrical</th><td>Wired industrial control panel</td></tr>
+            <tr><th>Structure</th><td>3D-printed components on MDF frame</td></tr>
+          </table>
+          <div class="fig">
+            <img src="images/conveyor-cell.jpg" alt="The assembled conveyor cell: a modular plastic belt on an MDF frame, with servo-driven diverter arms and indicator LEDs along one side." loading="lazy">
+            <div class="cap">Fig. 4.1 — Assembled cell, belt and diverters</div>
+          </div>
+          <div class="fig">
+            <svg viewBox="0 0 300 190" role="img" aria-label="Side view of a conveyor: packages travel over a weighing station, and a diverter routes them to one of two outputs based on the measured weight.">
+              <path class="ln" d="M20,116 L250,116"/>
+              <circle class="ln" cx="30" cy="126" r="10"/><circle class="ln" cx="240" cy="126" r="10"/>
+              <path class="ln-thin" d="M20,136 L250,136"/>
+              <rect class="ln" x="60" y="98" width="22" height="18"/>
+              <rect class="ln" x="118" y="98" width="22" height="18"/>
+              <path class="ln-amber" d="M112,124 L146,124"/>
+              <text class="figtext" x="106" y="152" style="fill:var(--amber)">WEIGH STATION</text>
+              <path class="ln-thin" d="M129,152 L129,138"/>
+              <path class="ln-jade" d="M196,112 L222,88"/>
+              <text class="figtext" x="196" y="82" style="fill:var(--jade)">DIVERTER</text>
+              <path class="ln-thin" d="M250,104 L288,104"/><path class="ln-thin" d="M280,99 L290,104 L280,109"/>
+              <text class="figtext" x="256" y="96">OUT A</text>
+              <path class="ln-thin" d="M250,132 L288,132"/><path class="ln-thin" d="M280,127 L290,132 L280,137"/>
+              <text class="figtext" x="256" y="148">OUT B</text>
+              <rect class="ln-thin" x="24" y="26" width="58" height="34"/>
+              <text class="figtext" x="34" y="46">PLC</text>
+              <path class="ln-thin" d="M53,60 L53,90 L129,90"/>
+              <path class="ln-thin" d="M82,43 L206,43 L206,100"/>
+              <text class="figtext" x="20" y="18">CONTROL PANEL</text>
+            </svg>
+            <div class="cap">Fig. 4.2 — Process layout</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section id="capabilities">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="mono">02</span>
+      <h2>Capabilities</h2>
+      <span class="count">Working knowledge</span>
+    </div>
+    <div class="caps rv">
+      <div class="cap">
+        <h4>Control &amp; estimation</h4>
+        <ul>
+          <li>Inverse kinematics</li>
+          <li>Gait generation</li>
+          <li>Kalman filtering (MEKF)</li>
+          <li>TRIAD attitude determination</li>
+          <li>Sensor calibration</li>
+          <li>Visual servoing</li>
+        </ul>
+      </div>
+      <div class="cap">
+        <h4>Embedded &amp; software</h4>
+        <ul>
+          <li>C / C++ · AVR assembler</li>
+          <li>MATLAB · Simulink</li>
+          <li>Python</li>
+          <li>ESP32 · STM32 · ATmega · ATSAMD21</li>
+          <li>I²C · UART · TCP · Bluetooth · LoRa</li>
+          <li>Siemens PLC — STL</li>
+        </ul>
+      </div>
+      <div class="cap">
+        <h4>Hardware</h4>
+        <ul>
+          <li>PCB design — Altium Designer</li>
+          <li>CAD — Fusion 360</li>
+          <li>3D printing, resin, laser cutting</li>
+          <li>Control panel wiring</li>
+          <li>Power &amp; battery systems</li>
+          <li>Bench testing and bring-up</li>
+        </ul>
+      </div>
+      <div class="cap">
+        <h4>Engineering practice</h4>
+        <ul>
+          <li>Controlled documentation</li>
+          <li>Trade studies</li>
+          <li>Requirements &amp; verification</li>
+          <li>Technical writing — ES / EN</li>
+          <li>Subsystem leadership</li>
+          <li>LaTeX · Git</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="earlier">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="mono">03</span>
+      <h2>Earlier work</h2>
+      <span class="count">6 entries</span>
+    </div>
+    <div class="cards rv">
+
+      <article class="card">
+        <img class="thumb" src="images/sumobot.jpg" alt="A 3D render of the sumo robot's printed circuit board: a green board carrying an ESP32 module, a motor driver, indicator LEDs and a USB connector." loading="lazy">
+        <div class="card-body">
+          <span class="code">SUM-01</span>
+          <h4>Sumo robot</h4>
+          <p>A 20 × 20 cm combat robot under 800 g, driven over Bluetooth from an Xbox One controller through an ESP32. I drew the schematic and laid out the PCB in Altium Designer, and modelled the chassis in Fusion 360 — parts came out of laser cutting, PLA printing and resin printing depending on what each one had to survive.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img class="thumb" src="images/animatronic-eyes.jpg" alt="A pair of animatronic eyes: white and blue 3D-printed eyeballs held in a blue and yellow printed frame with servo linkages behind them." loading="lazy">
+        <div class="card-body">
+          <span class="code">ANI-01</span>
+          <h4>Animatronic eyes</h4>
+          <p>A 3D-printed eye mechanism moved by six servos, driven in C from an Arduino Nano linked over UART to an Adafruit board. The interesting part was the limits: every servo had to be mapped to the range its linkage could actually reach, because a command past the mechanical stop destroys the joint.</p>
+          <a class="repo" href="https://github.com/Fats004/PROYECTO2" target="_blank" rel="noopener">Source on GitHub →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <img class="thumb" src="images/pong.jpg" alt="A handheld Pong console in a red 3D-printed case, its colour TFT screen showing the game title menu." loading="lazy">
+        <div class="card-body">
+          <span class="code">PNG-01</span>
+          <h4>Pong console</h4>
+          <p>A two-player Pong built on an STM32 NUCLEO-F446RE driving an ILI9341 TFT — full game loop, sound effects, and several difficulty screens, written against the display controller directly.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img class="thumb" src="images/clock.jpg" alt="A breadboard clock circuit with a four-digit seven-segment display showing the time, wired to an Arduino Nano." loading="lazy">
+        <div class="card-body">
+          <span class="code">CLK-01</span>
+          <h4>Clock and alarm</h4>
+          <p>Five modes — show time, show date, set time, set date, set alarm — running on an ATmega328p programmed entirely in assembler. Writing it at register level meant handling the timer interrupts and display multiplexing by hand rather than borrowing a library.</p>
+          <a class="repo" href="https://github.com/Fats004/PROYECTO1" target="_blank" rel="noopener">Source on GitHub →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <img class="thumb" src="images/r2d2.jpg" alt="The built R2-D2 replica standing on a workbench: a grey cylindrical body with blue detailing and a domed head." loading="lazy">
+        <div class="card-body">
+          <span class="code">R2D-01</span>
+          <h4>R2-D2 replica</h4>
+          <p>A working R2-D2 with no microcontroller and no firmware anywhere in it — the behaviour is wired directly into the circuit. Two DC motors drive the wheels and a servo turns the dome, all sequenced by discrete components.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb-svg">
+          <svg viewBox="0 0 320 240" role="img" aria-label="Diagram of vision-based line following: a camera on a small robot views a strip of the floor, and the offset between the detected line centroid and the image centre drives the steering command.">
+            <path class="ln" d="M28,232 C86,196 96,150 150,122 C204,94 236,58 246,16"/>
+            <rect class="ln-thin" x="20" y="96" width="280" height="44" stroke-dasharray="4 4"/>
+            <text class="figtext" x="24" y="92">REGION OF INTEREST</text>
+            <circle class="dot-jade" cx="171" cy="118" r="5"/>
+            <text class="figtext" x="180" y="114" style="fill:var(--jade)">CENTROID</text>
+            <path class="ln-thin" d="M160,140 L160,168"/>
+            <text class="figtext" x="128" y="180">IMAGE CENTRE</text>
+            <path class="ln-amber" d="M160,118 L167,118"/>
+            <path class="ln-amber" d="M163,114 L169,118 L163,122"/>
+            <text class="figtext" x="120" y="112" style="fill:var(--amber)">ERROR</text>
+            <rect class="ln" x="126" y="196" width="68" height="30"/>
+            <circle class="ln-thin" cx="142" cy="228" r="7"/><circle class="ln-thin" cx="178" cy="228" r="7"/>
+            <text class="figtext" x="200" y="216">ω = −K · error</text>
+            <text class="figtext" x="200" y="228">v = CONSTANT</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="code">VIS-01</span>
+          <h4>Vision-based line following</h4>
+          <p>Image-based visual servoing on a Pololu 3Pi with an onboard camera. One region of interest yields one centroid feature, and a proportional law on that error steers the robot at constant velocity — with a first-order filter on the turn rate so the motors are never commanded abruptly. Built in MATLAB and Webots so it ports straight to the physical robot.</p>
+        </div>
+      </article>
+
+    </div>
+    <p class="also rv">Also: LoRa sensor-network node development and PCB design for distributed long-range sensing.</p>
+  </div>
+</section>
+
+</main>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="mono" style="color:#6E7F8A">04</span>
+      <h2>Contact</h2>
+      <span class="count">Available 2026</span>
+    </div>
+    <div class="links">
+      <a href="mailto:fatimaurrutia04@hotmail.com">
+        <span class="k">Email</span><span class="v">fatimaurrutia04@hotmail.com</span>
+      </a>
+      <a href="https://github.com/Fats004" target="_blank" rel="noopener">
+        <span class="k">GitHub</span><span class="v">github.com/Fats004</span>
+      </a>
+      <a href="https://www.linkedin.com/in/fatima-urrutia-527353353" target="_blank" rel="noopener">
+        <span class="k">LinkedIn</span><span class="v">linkedin.com/in/fatima-urrutia</span>
+      </a>
+    </div>
+    <footer>
+      <span>Fátima Urrutia — Mechatronics engineering portfolio</span>
+      <span>Guatemala City · Rev. A · 2026</span>
+    </footer>
+  </div>
+</section>
+
+<script>
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.rv').forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>
