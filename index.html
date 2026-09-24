@@ -512,7 +512,7 @@ footer{padding:22px 0 40px;font-family:var(--mono);font-size:.66rem;letter-spaci
         <div class="card-body">
           <span class="code">SUM-01</span>
           <h4>Sumo robot</h4>
-          <p>A 20 × 20 cm combat robot under 800 g, driven over Bluetooth from an Xbox One controller through an ESP32. I drew the schematic and laid out the PCB in Altium Designer, and modelled the chassis in Fusion 360 — parts came out of laser cutting, PLA printing and resin printing depending on what each one had to survive.</p>
+          <p>A 20 × 20 cm combat robot under 800 g, driven over Bluetooth from an Xbox One controller through an ESP32. I drew the schematic and laid out the PCB in Altium Designer, and modelled the chassis in Fusion 360, parts came out of laser cutting, PLA printing and resin printing depending on what each one had to survive.</p>
         </div>
       </article>
 
@@ -531,7 +531,7 @@ footer{padding:22px 0 40px;font-family:var(--mono);font-size:.66rem;letter-spaci
         <div class="card-body">
           <span class="code">PNG-01</span>
           <h4>Pong console</h4>
-          <p>A two-player Pong built on an STM32 NUCLEO-F446RE driving an ILI9341 TFT — full game loop, sound effects, and several difficulty screens, written against the display controller directly.</p>
+          <p>A two-player Pong built on an STM32 NUCLEO-F446RE driving an ILI9341 TFT. Full game loop, sound effects, and several difficulty screens, written against the display controller directly.</p>
         </div>
       </article>
 
@@ -540,7 +540,7 @@ footer{padding:22px 0 40px;font-family:var(--mono);font-size:.66rem;letter-spaci
         <div class="card-body">
           <span class="code">CLK-01</span>
           <h4>Clock and alarm</h4>
-          <p>Five modes — show time, show date, set time, set date, set alarm — running on an ATmega328p programmed entirely in assembler. Writing it at register level meant handling the timer interrupts and display multiplexing by hand rather than borrowing a library.</p>
+          <p>Five modes show time, show date, set time, set date, set alarm running on an ATmega328p programmed entirely in assembler. Writing it at register level meant handling the timer interrupts and display multiplexing by hand rather than borrowing a library.</p>
           <a class="repo" href="https://github.com/Fats004/PROYECTO1" target="_blank" rel="noopener">Source on GitHub →</a>
         </div>
       </article>
@@ -550,33 +550,20 @@ footer{padding:22px 0 40px;font-family:var(--mono);font-size:.66rem;letter-spaci
         <div class="card-body">
           <span class="code">R2D-01</span>
           <h4>R2-D2 replica</h4>
-          <p>A working R2-D2 with no microcontroller and no firmware anywhere in it — the behaviour is wired directly into the circuit. Two DC motors drive the wheels and a servo turns the dome, all sequenced by discrete components.</p>
+          <p>A working R2-D2 with no microcontroller and no firmware anywhere in it, the behaviour is wired directly into the circuit. Two DC motors drive the wheels and a servo turns the dome, all sequenced by discrete components.</p>
         </div>
       </article>
 
       <article class="card">
         <div class="thumb-svg">
           <svg viewBox="0 0 320 240" role="img" aria-label="Diagram of vision-based line following: a camera on a small robot views a strip of the floor, and the offset between the detected line centroid and the image centre drives the steering command.">
-            <path class="ln" d="M28,232 C86,196 96,150 150,122 C204,94 236,58 246,16"/>
-            <rect class="ln-thin" x="20" y="96" width="280" height="44" stroke-dasharray="4 4"/>
-            <text class="figtext" x="24" y="92">REGION OF INTEREST</text>
-            <circle class="dot-jade" cx="171" cy="118" r="5"/>
-            <text class="figtext" x="180" y="114" style="fill:var(--jade)">CENTROID</text>
-            <path class="ln-thin" d="M160,140 L160,168"/>
-            <text class="figtext" x="128" y="180">IMAGE CENTRE</text>
-            <path class="ln-amber" d="M160,118 L167,118"/>
-            <path class="ln-amber" d="M163,114 L169,118 L163,122"/>
-            <text class="figtext" x="120" y="112" style="fill:var(--amber)">ERROR</text>
-            <rect class="ln" x="126" y="196" width="68" height="30"/>
-            <circle class="ln-thin" cx="142" cy="228" r="7"/><circle class="ln-thin" cx="178" cy="228" r="7"/>
-            <text class="figtext" x="200" y="216">ω = −K · error</text>
-            <text class="figtext" x="200" y="228">v = CONSTANT</text>
+            
           </svg>
         </div>
         <div class="card-body">
           <span class="code">VIS-01</span>
           <h4>Vision-based line following</h4>
-          <p>Image-based visual servoing on a Pololu 3Pi with an onboard camera. One region of interest yields one centroid feature, and a proportional law on that error steers the robot at constant velocity — with a first-order filter on the turn rate so the motors are never commanded abruptly. Built in MATLAB and Webots so it ports straight to the physical robot.</p>
+          <p>Image-based visual servoing on a Pololu 3Pi with an onboard camera. One region of interest yields one centroid feature, and a proportional law on that error steers the robot at constant velocity, with a first-order filter on the turn rate so the motors are never commanded abruptly. Built in MATLAB and Webots so it ports straight to the physical robot.</p>
         </div>
       </article>
 
