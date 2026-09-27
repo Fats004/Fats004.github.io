@@ -10,18 +10,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#E8E5E0;
-  --sand:#DBD7CA;
-  --paper:#F6F4F0;
+  /* palette: navy · steel · periwinkle · sky · blush */
+  --ink:#1E3058;
+  --ink-2:#3B4A6A;
+  --ink-3:#65728F;
+  --steel:#496896;
+  --steel-d:#3D5A86;
+  --steel-t:#DEE7F3;
+  --peri:#A4B5D3;
+  --sky:#B0CBE6;
+  --blush:#FED6CE;
+  --bg:#EEF2F8;
+  --sand:#DCE4F1;
+  --paper:#F5F7FB;
   --white:#FFFFFF;
-  --ink:#061A1E;
-  --ink-2:#33464A;
-  --ink-3:#66767A;
-  --teal:#299093;
-  --teal-d:#1E7477;
-  --teal-t:#D3E8E8;
-  --coral:#EF6156;
-  --sun:#FFBD00;
   --display:"Outfit",system-ui,sans-serif;
   --body:"Figtree",system-ui,sans-serif;
   --pad:clamp(16px,4vw,48px);
@@ -52,7 +54,7 @@ img{max-width:100%}
 }
 .pill:hover{transform:translateY(-2px)}
 .pill.sand{background:var(--sand);color:var(--ink)}
-.pill.teal{background:var(--teal-d);color:#fff}
+.pill.steel{background:var(--steel-d);color:#fff}
 .pill.ink{background:var(--ink);color:#fff}
 .pill.sm{height:36px;padding:0 16px;font-size:.88rem}
 
@@ -62,7 +64,7 @@ img{max-width:100%}
 }
 .chip.code{background:var(--ink);color:#fff;letter-spacing:.05em}
 .chip .d{width:9px;height:9px;border-radius:50%;flex:none}
-.d.teal{background:var(--teal)} .d.sun{background:var(--sun)} .d.coral{background:var(--coral)}
+.d.steel{background:var(--steel)} .d.sky{background:#7FA3CF} .d.blush{background:#EE9C8C} .d.ink{background:var(--ink)}
 
 /* ---------- highlighted statements ---------- */
 .say{
@@ -72,13 +74,13 @@ img{max-width:100%}
 .say.sm{font-size:clamp(1.6rem,3.4vw,2.6rem)}
 .say .line{display:flex;flex-wrap:wrap;align-items:center;gap:.14em;margin:.06em 0}
 .hl{display:inline-block;padding:0 .3em;border-radius:.62em}
-.hl.teal{background:var(--teal);color:#fff}
+.hl.steel{background:var(--steel);color:#fff}
 .hl.white{background:var(--white)}
-.hl.coral{background:var(--coral)}
+.hl.blush{background:var(--blush)}
 .hl.ink{background:var(--ink);color:#fff}
-.hl.sun{background:var(--sun)}
+.hl.sky{background:var(--sky)}
 .blob{width:1.08em;height:1.08em;border-radius:50%;flex:none;display:inline-block}
-.blob.sun{background:var(--sun)} .blob.white{background:#fff} .blob.coral{background:var(--coral)} .blob.teal{background:var(--teal)}
+.blob.sky{background:var(--sky)} .blob.white{background:#fff} .blob.blush{background:var(--blush)} .blob.steel{background:var(--steel)} .blob.peri{background:var(--peri)} .blob.ink{background:var(--ink)}
 
 /* ---------- top bar ---------- */
 .bar{position:sticky;top:0;z-index:50;padding:14px 0;pointer-events:none}
@@ -89,12 +91,12 @@ img{max-width:100%}
   background:var(--ink);color:#fff;font-family:var(--display);font-weight:800;font-size:1.15rem;
   letter-spacing:-.02em;text-decoration:none;
 }
-.mark i{width:20px;height:20px;border-radius:50%;background:var(--sun);display:block}
+.mark i{width:20px;height:20px;border-radius:50%;background:var(--blush);display:block}
 .bar nav{display:flex;gap:8px}
 @media(max-width:760px){.bar nav .pill.sand{display:none}}
 
 /* ---------- hero ---------- */
-.hero{padding:clamp(18px,4vw,40px) 0 clamp(56px,8vw,96px)}
+.hero{background:linear-gradient(180deg,#EEF2F8 0%,#E4ECF7 30%,#F3EEF2 62%,#FCE8E3 85%,#EEF2F8 100%);padding:clamp(18px,4vw,40px) 0 clamp(56px,8vw,96px)}
 .giant{
   font-family:var(--display);font-weight:800;text-transform:uppercase;
   font-size:clamp(3.3rem,13.5vw,11.5rem);line-height:.84;letter-spacing:-.045em;margin:0;
@@ -107,11 +109,11 @@ img{max-width:100%}
 
 .art{position:relative;aspect-ratio:1/1;max-width:520px;width:100%}
 .art > *{position:absolute;border-radius:999px}
-.art .portrait{left:10%;top:12%;width:62%;height:auto;aspect-ratio:1/1;border-radius:50%;object-fit:cover;background:var(--sand)}
-.art .c1{right:0;top:0;width:30%;aspect-ratio:1;background:var(--teal)}
-.art .c2{right:4%;bottom:2%;width:20%;height:42%;background:var(--white)}
-.art .c3{left:0;bottom:4%;width:18%;aspect-ratio:1;background:var(--sun)}
-.art .c4{left:2%;top:4%;width:10%;aspect-ratio:1;background:var(--coral)}
+.art .portrait{left:10%;top:12%;width:62%;height:auto;aspect-ratio:1/1;border-radius:50%;object-fit:cover;background:var(--peri)}
+.art .c1{right:0;top:0;width:30%;aspect-ratio:1;background:var(--steel)}
+.art .c2{right:4%;bottom:2%;width:20%;height:42%;background:var(--blush)}
+.art .c3{left:0;bottom:4%;width:18%;aspect-ratio:1;background:var(--sky)}
+.art .c4{left:2%;top:4%;width:10%;aspect-ratio:1;background:var(--peri)}
 @media(max-width:860px){.art{max-width:380px}}
 
 .hero .say{font-size:clamp(1.9rem,3.7vw,3.1rem)}
@@ -121,7 +123,7 @@ img{max-width:100%}
 
 .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:clamp(40px,6vw,72px)}
 .fact{background:var(--white);border-radius:var(--r-md);padding:18px 20px 20px}
-.fact .k{display:block;font-size:.78rem;font-weight:700;color:var(--teal-d);margin-bottom:6px;letter-spacing:.02em}
+.fact .k{display:block;font-size:.78rem;font-weight:700;color:var(--steel-d);margin-bottom:6px;letter-spacing:.02em}
 .fact .v{font-size:.95rem;line-height:1.4}
 @media(max-width:860px){.facts{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:460px){.facts{grid-template-columns:1fr}}
@@ -142,7 +144,7 @@ section{padding:clamp(56px,8vw,104px) 0}
   font-family:var(--display);font-weight:700;letter-spacing:-.035em;
   font-size:clamp(1.8rem,3.8vw,2.9rem);line-height:1.02;margin:0 0 12px;
 }
-.sheet .role{color:var(--teal-d);font-weight:600;font-size:.98rem;margin:0 0 20px}
+.sheet .role{color:var(--steel-d);font-weight:600;font-size:.98rem;margin:0 0 20px}
 .sheet p.text{margin:0 0 14px;color:var(--ink-2);max-width:62ch;font-size:1.02rem;line-height:1.68}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:22px}
 .tags span{display:inline-flex;align-items:center;height:28px;padding:0 12px;border-radius:999px;background:var(--sand);font-size:.78rem;font-weight:500}
@@ -170,10 +172,10 @@ section{padding:clamp(56px,8vw,104px) 0}
   text-decoration:none;transition:transform .18s ease;
 }
 .docs a.doc:hover{transform:translateX(3px)}
-.docs .dc{display:inline-flex;align-items:center;height:28px;padding:0 11px;border-radius:999px;background:var(--teal-t);color:var(--teal-d);font-size:.74rem;font-weight:700;letter-spacing:.04em}
+.docs .dc{display:inline-flex;align-items:center;height:28px;padding:0 11px;border-radius:999px;background:var(--steel-t);color:var(--steel-d);font-size:.74rem;font-weight:700;letter-spacing:.04em}
 .docs .dt{font-family:var(--display);font-weight:600;font-size:1.02rem;line-height:1.25;letter-spacing:-.01em}
 .docs .dt small{display:block;margin-top:2px;font-family:var(--body);font-weight:500;font-size:.78rem;color:var(--ink-3);letter-spacing:0}
-.docs .go{display:inline-flex;align-items:center;height:36px;padding:0 16px;border-radius:999px;background:var(--teal-d);color:#fff;font-family:var(--display);font-weight:700;font-size:.88rem;white-space:nowrap}
+.docs .go{display:inline-flex;align-items:center;height:36px;padding:0 16px;border-radius:999px;background:var(--steel-d);color:#fff;font-family:var(--display);font-weight:700;font-size:.88rem;white-space:nowrap}
 @media(max-width:480px){
   .docs a.doc{grid-template-columns:auto 1fr}
   .docs .go{display:none}
@@ -208,15 +210,17 @@ section{padding:clamp(56px,8vw,104px) 0}
 
 /* ---------- contact ---------- */
 .dots{display:flex;gap:clamp(8px,1.6vw,18px);margin-bottom:clamp(32px,5vw,56px)}
-.dots span{width:clamp(38px,7vw,84px);aspect-ratio:1;border-radius:50%;background:var(--white)}
-.dots span:nth-child(2){background:var(--teal)}
-.dots span:nth-child(4){background:var(--coral)}
-.dots span:nth-child(5){background:var(--sun)}
+.dots span{width:clamp(38px,7vw,84px);aspect-ratio:1;border-radius:50%}
+.dots span:nth-child(1){background:var(--ink)}
+.dots span:nth-child(2){background:var(--steel)}
+.dots span:nth-child(3){background:var(--peri)}
+.dots span:nth-child(4){background:var(--sky)}
+.dots span:nth-child(5){background:var(--blush)}
 .contact-card{background:var(--paper);border-radius:var(--r-lg);padding:clamp(22px,4vw,48px);margin-top:clamp(28px,4vw,44px)}
 .links{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .links a{display:block;background:var(--white);border-radius:24px;padding:22px 22px 24px;text-decoration:none;transition:transform .18s ease}
 .links a:hover{transform:translateY(-3px)}
-.links .k{display:flex;align-items:center;gap:8px;font-size:.8rem;font-weight:700;color:var(--teal-d);margin-bottom:8px}
+.links .k{display:flex;align-items:center;gap:8px;font-size:.8rem;font-weight:700;color:var(--steel-d);margin-bottom:8px}
 .links .k .d{width:9px;height:9px;border-radius:50%;display:inline-block}
 .links .v{font-family:var(--display);font-weight:700;font-size:1.12rem;letter-spacing:-.02em;word-break:break-word}
 @media(max-width:760px){.links{grid-template-columns:1fr}}
@@ -227,7 +231,7 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
   .rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
   .rv.in{opacity:1;transform:none}
 }
-:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+:focus-visible{outline:3px solid var(--steel);outline-offset:3px}
 </style>
 </head>
 <body>
@@ -239,7 +243,7 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
       <a class="pill sand" href="#work">Work</a>
       <a class="pill sand" href="#capabilities">Capabilities</a>
       <a class="pill sand" href="#earlier">Earlier work</a>
-      <a class="pill teal" href="#contact">Contact</a>
+      <a class="pill steel" href="#contact">Contact</a>
     </nav>
   </div>
 </div>
@@ -260,13 +264,13 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
       <div>
         <p class="say">
           <span class="line"><span class="hl ink">Between the</span></span>
-          <span class="line"><span class="blob sun" aria-hidden="true"></span><span class="hl teal">mechanism</span> and</span>
-          <span class="line"><span class="hl coral">the code</span> that keeps</span>
+          <span class="line"><span class="blob sky" aria-hidden="true"></span><span class="hl steel">mechanism</span> and</span>
+          <span class="line"><span class="hl blush">the code</span> that keeps</span>
           <span class="line"><span class="hl white">it stable.</span></span>
         </p>
         <p class="lede"><strong>I'm a fifth year mechatronics engineering student.</strong> I have been part of the design of a walking robot, a satellite with no actuators, a tether that brakes against a magnetic field, and an automated line that sorts by weight.</p>
         <div class="hero-cta">
-          <a class="pill teal" href="#work">See my work</a>
+          <a class="pill steel" href="#work">See my work</a>
           <a class="pill sand" href="#contact">Get in touch</a>
         </div>
       </div>
@@ -288,7 +292,7 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
     <div class="sec-head rv">
       <h2 class="say sm">
         <span class="line"><span class="hl ink">Selected</span></span>
-        <span class="line"><span class="blob sun" aria-hidden="true"></span><span class="hl coral">work</span></span>
+        <span class="line"><span class="blob sky" aria-hidden="true"></span><span class="hl blush">work</span></span>
       </h2>
       <span class="chip">4 projects</span>
     </div>
@@ -298,7 +302,7 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
       <div class="sheet-top">
         <span class="chip code">HEX-01</span>
         <span class="chip">Undergraduate thesis · 2026</span>
-        <span class="chip state"><span class="d teal"></span>Hardware validated</span>
+        <span class="chip state"><span class="d steel"></span>Hardware validated</span>
       </div>
       <div class="sheet-body">
         <div class="sheet-main">
@@ -355,7 +359,7 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
       <div class="sheet-top">
         <span class="chip code">QTZ2-ADCS</span>
         <span class="chip">UVG Aerospace Laboratory</span>
-        <span class="chip state"><span class="d sun"></span>In development</span>
+        <span class="chip state"><span class="d blush"></span>In development</span>
       </div>
       <div class="sheet-body">
         <div class="sheet-main">
@@ -391,7 +395,7 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
       <div class="sheet-top">
         <span class="chip code">DOSET-ET</span>
         <span class="chip">Concept design · Rev. B model</span>
-        <span class="chip state"><span class="d coral"></span>Analysis complete</span>
+        <span class="chip state"><span class="d ink"></span>Analysis complete</span>
       </div>
       <div class="sheet-body">
         <div class="sheet-main">
@@ -423,7 +427,7 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
       <div class="sheet-top">
         <span class="chip code">AUT-CB</span>
         <span class="chip">Industrial Automation · UVG</span>
-        <span class="chip state"><span class="d teal"></span>Built &amp; commissioned</span>
+        <span class="chip state"><span class="d steel"></span>Built &amp; commissioned</span>
       </div>
       <div class="sheet-body">
         <div class="sheet-main">
@@ -461,14 +465,14 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
   <div class="wrap">
     <div class="sec-head rv">
       <h2 class="say sm">
-        <span class="line"><span class="hl teal">What I</span></span>
-        <span class="line"><span class="hl white">work with</span><span class="blob coral" aria-hidden="true"></span></span>
+        <span class="line"><span class="hl steel">What I</span></span>
+        <span class="line"><span class="hl white">work with</span><span class="blob blush" aria-hidden="true"></span></span>
       </h2>
       <span class="chip">Working knowledge</span>
     </div>
     <div class="caps rv">
       <div class="cap">
-        <h4><span class="blob teal"></span>Control &amp; estimation</h4>
+        <h4><span class="blob steel"></span>Control &amp; estimation</h4>
         <ul>
           <li>Inverse kinematics</li>
           <li>Gait generation</li>
@@ -479,7 +483,7 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
         </ul>
       </div>
       <div class="cap">
-        <h4><span class="blob sun"></span>Embedded &amp; software</h4>
+        <h4><span class="blob sky"></span>Embedded &amp; software</h4>
         <ul>
           <li>C / C++ · AVR assembler</li>
           <li>MATLAB · Simulink</li>
@@ -490,7 +494,7 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
         </ul>
       </div>
       <div class="cap">
-        <h4><span class="blob coral"></span>Hardware</h4>
+        <h4><span class="blob blush"></span>Hardware</h4>
         <ul>
           <li>PCB design — Altium Designer</li>
           <li>CAD — Fusion 360</li>
@@ -501,7 +505,7 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
         </ul>
       </div>
       <div class="cap">
-        <h4><span class="blob" style="background:var(--ink)"></span>Engineering practice</h4>
+        <h4><span class="blob ink"></span>Engineering practice</h4>
         <ul>
           <li>Controlled documentation</li>
           <li>Trade studies</li>
@@ -519,8 +523,8 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
   <div class="wrap">
     <div class="sec-head rv">
       <h2 class="say sm">
-        <span class="line"><span class="hl sun">Earlier</span></span>
-        <span class="line"><span class="blob teal" aria-hidden="true"></span><span class="hl white">work</span></span>
+        <span class="line"><span class="hl sky">Earlier</span></span>
+        <span class="line"><span class="blob steel" aria-hidden="true"></span><span class="hl white">work</span></span>
       </h2>
       <span class="chip">6 projects</span>
     </div>
@@ -595,24 +599,24 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
 
 <section id="contact">
   <div class="wrap">
-    <div class="dots rv" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="dots rv" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
     <h2 class="say rv">
-      <span class="line"><span class="hl teal">Let's build</span></span>
-      <span class="line"><span class="blob sun" aria-hidden="true"></span><span class="hl white">something.</span></span>
+      <span class="line"><span class="hl steel">Let's build</span></span>
+      <span class="line"><span class="blob blush" aria-hidden="true"></span><span class="hl white">something.</span></span>
     </h2>
 
     <div class="contact-card rv">
       <div class="links">
         <a href="mailto:fatimaurrutia04@hotmail.com">
-          <span class="k"><span class="d teal"></span>Email</span>
+          <span class="k"><span class="d steel"></span>Email</span>
           <span class="v">fatimaurrutia04@hotmail.com</span>
         </a>
         <a href="https://github.com/Fats004" target="_blank" rel="noopener">
-          <span class="k"><span class="d sun"></span>GitHub</span>
+          <span class="k"><span class="d sky"></span>GitHub</span>
           <span class="v">github.com/Fats004</span>
         </a>
         <a href="https://www.linkedin.com/in/fatima-urrutia-527353353" target="_blank" rel="noopener">
-          <span class="k"><span class="d coral"></span>LinkedIn</span>
+          <span class="k"><span class="d blush"></span>LinkedIn</span>
           <span class="v">linkedin.com/in/fatima-urrutia</span>
         </a>
       </div>
