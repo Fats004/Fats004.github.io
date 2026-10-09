@@ -198,6 +198,7 @@ section{padding:clamp(56px,8vw,104px) 0}
 @media(max-width:620px){.cards{grid-template-columns:1fr}}
 .card{background:var(--white);border-radius:32px;display:flex;flex-direction:column;overflow:hidden}
 .card .thumb{width:calc(100% - 20px);margin:10px 10px 0;aspect-ratio:4/3;object-fit:cover;display:block;border-radius:24px;background:var(--paper)}
+.card .thumb.contain{object-fit:contain}
 .card .thumb-svg{margin:10px 10px 0;border-radius:24px;background:var(--paper);padding:10px}
 .card .thumb-svg svg{width:100%;height:auto;display:block}
 .card-body{padding:18px 22px 24px;display:flex;flex-direction:column;flex:1}
@@ -343,11 +344,11 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
             <tr><th>Simulation</th><td>MATLAB, Peter Corke Robotics Toolbox</td></tr>
           </table>
           <figure class="fig">
-            <img src="images/hexapod-hardware.jpg" alt="The assembled hexapod robot standing on a laboratory floor, six three-jointed legs supporting a chassis with battery pack and control boards.">
+            <img src="images/hexapod-hardware.jpg" alt="The assembled hexapod robot standing on a laboratory table, six three-jointed legs with brown and black printed links supporting a chassis with stacked control boards.">
             <figcaption class="cap">Fig. 1.1 Assembled platform, laboratory</figcaption>
           </figure>
           <figure class="fig contain">
-            <img src="images/hexapod-cad.jpg" alt="CAD render of the hexapod seen from above, showing the chassis plate and the six legs with their servo brackets and green foot links." loading="lazy">
+            <img src="images/hexapod-cad.webp" alt="CAD render of the hexapod in perspective, showing the chassis plate, stacked control boards and the six legs with their servo brackets and printed foot links." loading="lazy">
             <figcaption class="cap">Fig. 1.2 CAD assembly, leg arrangement</figcaption>
           </figure>
         </div>
@@ -417,6 +418,10 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
             <tr><th>Force</th><td>Lorentz drag, F = I L × B</td></tr>
             <tr><th>Key risk</th><td>Deployer mass ≈ 400–500 g → possible 3U host</td></tr>
           </table>
+          <figure class="fig contain">
+            <img src="images/doset-tether.png" alt="Technical drawing of the tether geometry in three views: (a) two tape branches of length L hanging toward nadir from the host, separated by d_sep, from the terminal end to the free end; (b) section A–A showing the flat tape of width w and the dashed circle of its flux-equivalent radius b_eq; (c) detail B, the layer stack with a conducting layer of thickness t_c between two non-conducting layers, total thickness t_Σ." loading="lazy">
+            <figcaption class="cap">Fig. 3.1 Tape geometry, cross-section and layer stack</figcaption>
+          </figure>
         </div>
       </div>
     </article>
@@ -525,16 +530,52 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
         <span class="line"><span class="hl sky">Earlier</span></span>
         <span class="line"><span class="blob steel" aria-hidden="true"></span><span class="hl white">work</span></span>
       </h2>
-      <span class="chip">6 projects</span>
+      <span class="chip">10 projects</span>
     </div>
     <div class="cards rv">
 
       <article class="card">
-        <img class="thumb" src="images/sumobot.jpg" alt="A 3D render of the sumo robot's printed circuit board: a green board carrying an ESP32 module, a motor driver, indicator LEDs and a USB connector." loading="lazy">
+        <img class="thumb contain" src="images/sumobot.webp" alt="The sumo robot shown twice: on the left a CAD model of its laser-cut MDF chassis with the wheels and motors visible through the walls, on the right the finished robot with a blue sloped front and two orange LEDs." loading="lazy">
         <div class="card-body">
           <span class="chip code">SUM-01</span>
           <h4>Sumo robot</h4>
           <p>A 20 × 20 cm combat robot under 800 g, driven over Bluetooth from an Xbox One controller through an ESP32. I drew the schematic and laid out the PCB in Altium Designer, and modelled the chassis in Fusion 360, parts came out of laser cutting, PLA printing and resin printing depending on what each one had to survive.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img class="thumb" src="images/pcb-bcd.jpg" alt="Altium Designer layout of a six-layer PCB: integrated circuits on the left, a column of seven transistors with resistors on the right and a seven-segment display footprint, with traces in red, yellow, cyan and blue for each copper layer." loading="lazy">
+        <div class="card-body">
+          <span class="chip code">PCB-01</span>
+          <h4>BCD to seven-segment PCB</h4>
+          <p>A six-layer, 80 × 80 mm board laid out in Altium Designer against a fabricator's full rule set. Every track width came from the IPC-2221 current charts so no net rises more than 10 °C, 2 A on power and ground, and each net stays under its length limit. With no plated holes available, the through-hole parts could only be connected on the bottom layer.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img class="thumb" src="images/audio-eq.jpg" alt="The audio equalizer built on breadboards: rows of eight-pin op-amp chips with resistors, capacitors and colour-coded jumper wires, and four rotary potentiometers along the front edge." loading="lazy">
+        <div class="card-body">
+          <span class="chip code">AEQ-01</span>
+          <h4>Audio equalizer</h4>
+          <p>A one-channel equalizer where every stage is an op-amp circuit. The signal from a phone splits into low-pass, band-pass and high-pass filters around 500 Hz and 5 kHz, each band gets its own adjustable gain, and a summing amplifier mixes them back to drive an 8 Ω speaker. Designed and simulated in LTspice, then built on breadboard with a partner.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img class="thumb" src="images/cnc-mould.jpg" alt="A machined aluminium mould block with four bolt holes at the corners and a deep rounded cavity holding a detailed relief, its surfaces showing fine toolpath marks." loading="lazy">
+        <div class="card-body">
+          <span class="chip code">CNC-01</span>
+          <h4>Machined mould</h4>
+          <p>A mould designed entirely in Autodesk Inventor, with the cavity derived from the part model. The roughing and finishing strategies were planned in Inventor CAM, then run on the lab's Haas CNC mill to cut the block.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img class="thumb contain" src="images/dsp-gui.webp" alt="A MATLAB interface for signal processing: switches for STM32 or MATLAB mode and FIR or IIR filter, dropdowns for effect, approximation, filter type, window and order, and plots of an audio signal before and after filtering, both spectra and the filter's frequency response." loading="lazy">
+        <div class="card-body">
+          <span class="chip code">DSP-01</span>
+          <h4>Signal processing unit</h4>
+          <p>A real-time filter unit on an STM32 NUCLEO-F446RE paired with a MATLAB App Designer interface. The board samples through its ADC, runs IIR filters as difference equations and outputs the result on its DAC, with new coefficients sent from the PC so the filter changes without recompiling. The interface designs FIR and IIR filters, plots signals, spectra and frequency responses, and plays back the processed audio.</p>
         </div>
       </article>
 
@@ -577,15 +618,11 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
       </article>
 
       <article class="card">
-        <div class="thumb-svg">
-          <svg viewBox="0 0 320 240" role="img" aria-label="Diagram of vision-based line following: a camera on a small robot views a strip of the floor, and the offset between the detected line centroid and the image centre drives the steering command.">
-
-          </svg>
-        </div>
+        <img class="thumb" src="images/ball-tracking.jpg" alt="A Pololu 3Pi+ robot with an OpenMV camera module and battery mounted on top, facing an orange ping-pong ball held in front of it." loading="lazy">
         <div class="card-body">
           <span class="chip code">VIS-01</span>
-          <h4>Vision-based line following</h4>
-          <p>Image-based visual servoing on a Pololu 3Pi with an onboard camera. One region of interest yields one centroid feature, and a proportional law on that error steers the robot at constant velocity, with a first-order filter on the turn rate so the motors are never commanded abruptly. Built in MATLAB and Webots so it ports straight to the physical robot.</p>
+          <h4>Vision-based ball tracking</h4>
+          <p>Image-based visual servoing on a Pololu 3Pi+ carrying an OpenMV Cam H7R2. The camera picks out an orange ball by colour and sends its centroid and size to the robot: the horizontal offset drives the turn rate, and the ball's apparent size sets the forward speed so the robot closes in and stops at a set distance. Tuned first in Webots, then run on the physical robot.</p>
         </div>
       </article>
 
