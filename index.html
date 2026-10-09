@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fátima Urrutia — Mechatronics Engineering Portfolio</title>
+<title>Fátima Urrutia | Mechatronics Engineering Portfolio</title>
 <meta name="description" content="Engineering portfolio of Fátima Urrutia: hexapod robotics, CubeSat attitude determination and control, electrodynamic tether deorbit, industrial automation and embedded systems.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -307,8 +307,8 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
       <div class="sheet-body">
         <div class="sheet-main">
           <h3>HexaPod</h3>
-          <p class="role">Author — mechanical design, kinematics, firmware, control pipeline</p>
-          <p class="text">An eighteen-degree-of-freedom walking robot built end to end as my thesis project. Each of the six legs has three joints, so every step is a coordinated solution of the inverse kinematics for three limbs at once while the other three hold the body up. A hexapod is statically stable — it never has to catch itself — which makes it the right platform for slow, deliberate work on ground a wheeled robot cannot cross.</p>
+          <p class="role">Author: mechanical design, kinematics, firmware, control pipeline</p>
+          <p class="text">An eighteen-degree-of-freedom walking robot built end to end as my thesis project. Each of the six legs has three joints, so every step is a coordinated solution of the inverse kinematics for three limbs at once while the other three hold the body up. A hexapod is statically stable which makes it the right platform for slow, deliberate work on ground a wheeled robot cannot cross.</p>
           <p class="text">The control path runs from a MATLAB model down to the joints: analytic inverse kinematics generate the foot trajectories, an ESP32 carries them over Wi-Fi as TCP/JSON packets, and an OpenCM9.04 board translates them into position commands for the servo chain. Getting that path stable meant resolving a core conflict in the Bluepad32 stack, remapping servo IDs, fabricating a custom UART board to make the two controllers talk cleanly, and tuning gait timing until the body stopped fighting its own legs.</p>
           <p class="text">The simulation and the hardware share one gait model, so a change to the tripod timing in MATLAB is the same change the robot walks with. Current work extends that model from straight-line walking to in-place rotation.</p>
           <div class="tags">
@@ -334,7 +334,7 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
         </div>
         <div class="sheet-side">
           <table class="spec">
-            <tr><th>Configuration</th><td>6 legs × 3 DOF — 18 joints</td></tr>
+            <tr><th>Configuration</th><td>6 legs × 3 DOF, 18 joints</td></tr>
             <tr><th>Actuation</th><td>18 × Dynamixel AX-12A, daisy-chained</td></tr>
             <tr><th>Controllers</th><td>OpenCM9.04 (servo bus) + ESP32 (network bridge)</td></tr>
             <tr><th>Link</th><td>TCP/JSON over Wi-Fi; custom UART interface PCB</td></tr>
@@ -344,11 +344,11 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
           </table>
           <figure class="fig">
             <img src="images/hexapod-hardware.jpg" alt="The assembled hexapod robot standing on a laboratory floor, six three-jointed legs supporting a chassis with battery pack and control boards.">
-            <figcaption class="cap">Fig. 1.1 — Assembled platform, laboratory</figcaption>
+            <figcaption class="cap">Fig. 1.1 Assembled platform, laboratory</figcaption>
           </figure>
           <figure class="fig contain">
             <img src="images/hexapod-cad.jpg" alt="CAD render of the hexapod seen from above, showing the chassis plate and the six legs with their servo brackets and green foot links." loading="lazy">
-            <figcaption class="cap">Fig. 1.2 — CAD assembly, leg arrangement</figcaption>
+            <figcaption class="cap">Fig. 1.2 CAD assembly, leg arrangement</figcaption>
           </figure>
         </div>
       </div>
@@ -364,9 +364,9 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
       <div class="sheet-body">
         <div class="sheet-main">
           <h3>QUETZAL-2 attitude determination &amp; control</h3>
-          <p class="role">Subsystem lead — ADCS design, analysis and flight documentation</p>
-          <p class="text">QUETZAL-2 is Guatemala's second nanosatellite. I lead the subsystem that answers two questions in orbit: which way is the satellite pointing, and what keeps it from tumbling. The answer to the second is entirely passive — a permanent NdFeB magnet aligns the body with Earth's field, and four hysteresis rods bleed off rotational energy as magnetic losses. No reaction wheels, no magnetorquers, nothing that can fail closed.</p>
-          <p class="text">Determination is the active half. A magnetometer, an inertial unit and photodiode sun sensors share a single 400 kHz I²C bus; TRIAD gives the first attitude estimate from the field and sun vectors, and a multiplicative extended Kalman filter written in C++ carries it forward between measurements. Because the control magnet sits inside the same spacecraft as the magnetometer, I ran a magnetic cleanliness analysis across three measurement campaigns to separate the field the satellite makes from the field it is trying to measure — including parasitic interference from the deorbit module's own magnets.</p>
+          <p class="role">Subsystem lead: ADCS design, analysis and flight documentation</p>
+          <p class="text">QUETZAL-2 is Guatemala's second nanosatellite. I lead the subsystem that answers two questions in orbit: which way is the satellite pointing, and what keeps it from tumbling. The answer to the second is entirely passive; a permanent NdFeB magnet aligns the body with Earth's field, and four hysteresis rods bleed off rotational energy as magnetic losses. No reaction wheels, no magnetorquers, nothing that can fail closed.</p>
+          <p class="text">Determination is the active half. A magnetometer, an inertial unit and photodiode sun sensors share a single 400 kHz I²C bus; TRIAD gives the first attitude estimate from the field and sun vectors, and a multiplicative extended Kalman filter written in C++ carries it forward between measurements. Because the control magnet sits inside the same spacecraft as the magnetometer, I ran a magnetic cleanliness analysis across three measurement campaigns to separate the field the satellite makes from the field it is trying to measure; including parasitic interference from the deorbit module's own magnets.</p>
           <p class="text">The subsystem is documented the way flight hardware has to be: controlled electronics and mechanical design documents under revision, a bill of materials with every part classified as magnetic or not, and as-built geometry that has already forced one design revision when a zero-clearance crossing turned up in the layout.</p>
           <div class="tags">
             <span>Passive magnetic control</span><span>TRIAD</span><span>MEKF</span><span>C++</span><span>ATSAMD21</span><span>I²C</span><span>Sensor calibration</span><span>Python</span><span>Flight documentation</span>
@@ -374,9 +374,9 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
         </div>
         <div class="sheet-side">
           <table class="spec">
-            <tr><th>Platform</th><td>CubeSat — QUETZAL-2</td></tr>
+            <tr><th>Satellite</th><td>CubeSat QUETZAL-2</td></tr>
             <tr><th>Control</th><td>Passive: NdFeB dipole + 4 hysteresis rods</td></tr>
-            <tr><th>Sensors</th><td>MMC5983MA magnetometer · BMI088 IMU · TEMD6010FX01 photodiodes · ADS7828 ADC</td></tr>
+            <tr><th>Sensors</th><td>MMC5983MA magnetometer | BMI088 IMU | TEMD6010FX01 photodiodes | ADS7828 ADC</td></tr>
             <tr><th>Bus</th><td>Single I²C segment at 400 kHz</td></tr>
             <tr><th>Estimation</th><td>TRIAD initialiser into multiplicative EKF</td></tr>
             <tr><th>Analysis</th><td>Magnetic cleanliness, 3 measurement campaigns</td></tr>
@@ -384,7 +384,7 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
           </table>
           <figure class="fig contain">
             <img src="images/quetzal2-exploded.jpg" alt="Exploded view of the QUETZAL-2 CubeSat showing the stacked subsystem boards, labelled deorbit, power, on-board computer, ADCS, MILO payload, structure, and communications with LoRa." loading="lazy">
-            <figcaption class="cap">Fig. 2.1 — Spacecraft stack, ADCS in context</figcaption>
+            <figcaption class="cap">Fig. 2.1 Spacecraft stack, ADCS in context</figcaption>
           </figure>
         </div>
       </div>
@@ -394,14 +394,14 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
     <article class="sheet rv">
       <div class="sheet-top">
         <span class="chip code">DOSET-ET</span>
-        <span class="chip">Concept design · Rev. B model</span>
+        <span class="chip">Concept design </span>
         <span class="chip state"><span class="d ink"></span>Analysis complete</span>
       </div>
       <div class="sheet-body">
         <div class="sheet-main">
           <h3>Electrodynamic tape tether for deorbit</h3>
           <p class="role">Physics model, configuration trade study, materials validation</p>
-          <p class="text">A deorbit module that removes a small satellite from orbit using nothing but the environment it flies through. A bare aluminium tape deployed from the spacecraft collects electrons from the ionospheric plasma along its length; the resulting current, crossed with Earth's magnetic field, produces a Lorentz force that opposes the orbital velocity. No propellant, no thruster, no stored energy — the drag comes from the plasma and the field.</p>
+          <p class="text">A deorbit module that removes a small satellite from orbit using nothing but the environment it flies through. A bare aluminium tape deployed from the spacecraft collects electrons from the ionospheric plasma along its length; the resulting current, crossed with Earth's magnetic field, produces a Lorentz force that opposes the orbital velocity. No propellant, no thruster, no stored energy; the drag comes from the plasma and the field.</p>
           <p class="text">I rebuilt the physics model after finding three errors in the earlier design that each broke the concept in a different way: a tape thickness that no supplier could actually manufacture, an overestimate of how strongly the tether couples to the geomagnetic field, and an incorrect formulation of orbital-motion-limited current collection. The corrected model settles on a 200 m × 15 mm × 25 µm Al-1350 tape as the primary configuration, backed by a trade study of five candidate materials scored against flight heritage, conductivity and handling.</p>
           <p class="text">The honest conclusion of that work is a risk, not a result: the deployment mechanism, at roughly 400–500 g, is heavy enough that it may push the minimum viable host spacecraft from 2U to 3U. That constraint matters more to the mission than any refinement of the tape itself.</p>
           <div class="tags">
@@ -412,11 +412,10 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
           <table class="spec">
             <tr><th>Function</th><td>Propellantless deorbit by electrodynamic drag</td></tr>
             <tr><th>Primary config.</th><td>200 m × 15 mm × 25 µm bare tape</td></tr>
-            <tr><th>Material</th><td>Al-1350 — selected from 5 candidates</td></tr>
+            <tr><th>Material</th><td>Al-1350 </td></tr>
             <tr><th>Collection</th><td>Orbital-motion-limited electron collection</td></tr>
             <tr><th>Force</th><td>Lorentz drag, F = I L × B</td></tr>
             <tr><th>Key risk</th><td>Deployer mass ≈ 400–500 g → possible 3U host</td></tr>
-            <tr><th>Scope</th><td>Corrected Rev. B model + materials trade study</td></tr>
           </table>
         </div>
       </div>
@@ -433,7 +432,7 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
         <div class="sheet-main">
           <h3>Conveyor cell for weight-based sorting</h3>
           <p class="role">PLC programming, control panel wiring, HMI, mechanical build</p>
-          <p class="text">A working conveyor that weighs each package as it arrives and routes it to the correct output. The logic runs on a Siemens PLC programmed in STL under SIMATIC Manager — statement list rather than ladder, which forced me to think about the scan cycle explicitly instead of leaning on graphical shorthand.</p>
+          <p class="text">A working conveyor that weighs each package as it arrives and routes it to the correct output. The logic runs on a Siemens PLC programmed in STL under SIMATIC Manager, which forced me to think about the scan cycle explicitly instead of leaning on graphical shorthand.</p>
           <p class="text">I wired the control panel to industrial practice, built an HMI so an operator can set thresholds and watch counts without touching the program, and fabricated the mechanics from 3D-printed parts on an MDF frame with a modular plastic belt. Sensors detect package arrival and position, the drive motor indexes the belt, and the sorting decision happens between one part leaving the scale and the next one reaching it.</p>
           <p class="text">It is a teaching-scale machine, but the whole chain is real: sensor to input card, logic to output card, output to actuator, and an interface a person who did not write the code can actually operate.</p>
           <div class="tags">
@@ -445,14 +444,14 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
             <tr><th>Function</th><td>Automatic classification of packages by weight</td></tr>
             <tr><th>Controller</th><td>Siemens PLC, programmed in STL</td></tr>
             <tr><th>Software</th><td>SIMATIC Manager</td></tr>
-            <tr><th>Operator interface</th><td>HMI — thresholds, status, counts</td></tr>
+            <tr><th>Operator interface</th><td>HMI: thresholds, status, counts</td></tr>
             <tr><th>Field devices</th><td>Weight sensing, position sensors, gearmotor drive</td></tr>
             <tr><th>Electrical</th><td>Wired industrial control panel</td></tr>
             <tr><th>Structure</th><td>3D-printed components on MDF frame</td></tr>
           </table>
           <figure class="fig">
             <img src="images/conveyor-cell.jpg" alt="The assembled conveyor cell: a modular plastic belt on an MDF frame, with servo-driven diverter arms and indicator LEDs along one side." loading="lazy">
-            <figcaption class="cap">Fig. 4.1 — Assembled cell, belt and diverters</figcaption>
+            <figcaption class="cap">Fig. 4.1 Assembled cell, belt and diverters</figcaption>
           </figure>
         </div>
       </div>
@@ -485,19 +484,19 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
       <div class="cap">
         <h4><span class="blob sky"></span>Embedded &amp; software</h4>
         <ul>
-          <li>C / C++ · AVR assembler</li>
-          <li>MATLAB · Simulink</li>
+          <li>C / C++ | AVR assembler</li>
+          <li>MATLAB | Simulink</li>
           <li>Python</li>
-          <li>ESP32 · STM32 · ATmega · ATSAMD21</li>
-          <li>I²C · UART · TCP · Bluetooth · LoRa</li>
-          <li>Siemens PLC — STL</li>
+          <li>ESP32 | STM32 | ATmega | ATSAMD21</li>
+          <li>I²C | UART | TCP | Bluetooth | LoRa</li>
+          <li>Siemens PLC | STL</li>
         </ul>
       </div>
       <div class="cap">
         <h4><span class="blob blush"></span>Hardware</h4>
         <ul>
-          <li>PCB design — Altium Designer</li>
-          <li>CAD — Fusion 360</li>
+          <li>PCB design | Altium Designer</li>
+          <li>CAD | Fusion 360</li>
           <li>3D printing, resin, laser cutting</li>
           <li>Control panel wiring</li>
           <li>Power &amp; battery systems</li>
@@ -510,9 +509,9 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
           <li>Controlled documentation</li>
           <li>Trade studies</li>
           <li>Requirements &amp; verification</li>
-          <li>Technical writing — ES / EN</li>
+          <li>Technical writing ES / EN</li>
           <li>Subsystem leadership</li>
-          <li>LaTeX · Git</li>
+          <li>LaTeX | Git</li>
         </ul>
       </div>
     </div>
@@ -621,8 +620,8 @@ footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin
         </a>
       </div>
       <footer>
-        <span>Fátima Urrutia — Mechatronics engineering portfolio</span>
-        <span>Guatemala City · 2026</span>
+        <span>Fátima Urrutia | Mechatronics engineering portfolio</span>
+        <span>Guatemala City, 2026</span>
       </footer>
     </div>
   </div>
